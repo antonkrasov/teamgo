@@ -12,5 +12,9 @@ class TeamGoTextStyles {
     fontWeight: FontWeight.w700
   );
 
+  static const TextStyle button = TextStyle(
+    color: Colors.white,
+  );
+
 
 }
