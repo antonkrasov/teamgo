@@ -1,14 +1,16 @@
+import 'package:equatable/equatable.dart';
 import 'package:uuid/uuid.dart';
 
 final uuidGenerator = Uuid();
 
-class Activity {
+class Activity extends Equatable {
   final String id;
   final String who;
   final String what;
   final String where;
   final DateTime when;
   final String image;
+  final bool createdByUser;
 
   Activity({
     this.id,
@@ -17,6 +19,7 @@ class Activity {
     this.where,
     this.when,
     this.image,
+    this.createdByUser = false,
   });
 
   factory Activity.fromRaw(Map raw) {
@@ -31,4 +34,18 @@ class Activity {
       image: raw['image'],
     );
   }
+
+  @override
+  List<Object> get props => [
+        id,
+        who,
+        what,
+        where,
+        when,
+        image,
+        createdByUser,
+      ];
+
+  @override
+  bool get stringify => true;
 }
