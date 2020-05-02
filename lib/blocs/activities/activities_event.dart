@@ -12,19 +12,10 @@ class LoadActivitesEvent extends ActivitiesEvent {
   List<Object> get props => [];
 }
 
-class AddActivityEvent extends ActivitiesEvent {
+class AddEditActivityEvent extends ActivitiesEvent {
   final Activity activity;
 
-  AddActivityEvent(this.activity);
-
-  @override
-  List<Object> get props => [activity];
-}
-
-class EditActivityEvent extends ActivitiesEvent {
-  final Activity activity;
-
-  EditActivityEvent(this.activity);
+  AddEditActivityEvent(this.activity);
 
   @override
   List<Object> get props => [activity];

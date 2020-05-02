@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:teamgo/screens/activity_details.dart';
+import 'package:teamgo/screens/add_edit_activity.dart';
 import 'package:teamgo/screens/home.dart';
 import 'package:teamgo/screens/splash.dart';
 
@@ -14,6 +16,18 @@ class Router {
         return MaterialPageRoute(
           builder: (_) => HomeScreen(),
           settings: RouteSettings(isInitialRoute: true),
+        );
+      case 'add_edit_activity':
+        return MaterialPageRoute(
+          builder: (_) => AddEditActivityScreen(
+            paramActivity: settings.arguments,
+          ),
+        );
+      case 'activity_details':
+        return MaterialPageRoute(
+          builder: (_) => ActivityDetailsScreen(
+            paramActivity: settings.arguments,
+          ),
         );
       default:
         return MaterialPageRoute(

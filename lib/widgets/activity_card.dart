@@ -16,27 +16,35 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        _buildImage(),
-        SizedBox(
-          height: 8,
-        ),
-        _buildWhere(),
-        SizedBox(
-          height: 2,
-        ),
-        _buildWhen(),
-        SizedBox(
-          height: 2,
-        ),
-        _buildWho(),
-        SizedBox(
-          height: 6,
-        ),
-        _buildWhat(),
-      ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          'activity_details',
+          arguments: this.activity,
+        );
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          _buildImage(),
+          SizedBox(
+            height: 8,
+          ),
+          _buildWhere(),
+          SizedBox(
+            height: 2,
+          ),
+          _buildWhen(),
+          SizedBox(
+            height: 2,
+          ),
+          _buildWho(),
+          SizedBox(
+            height: 6,
+          ),
+          _buildWhat(),
+        ],
+      ),
     );
   }
 

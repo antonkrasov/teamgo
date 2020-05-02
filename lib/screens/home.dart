@@ -7,12 +7,21 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('TeamGo'),
+      ),
       body: SafeArea(
         bottom: false,
         child: BlocBuilder(
           bloc: BlocProvider.of<ActivitiesBloc>(context),
           builder: (context, state) => _buildState(context, state),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed('add_edit_activity');
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

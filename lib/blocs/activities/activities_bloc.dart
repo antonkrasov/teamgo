@@ -22,10 +22,8 @@ class ActivitiesBloc extends Bloc<ActivitiesEvent, ActivitiesState> {
   ) async* {
     if (event is LoadActivitesEvent) {
       yield* _handleLoadActivitesEvent();
-    } else if (event is AddActivityEvent) {
+    } else if (event is AddEditActivityEvent) {
       yield* _handleAddActivityEvent(event);
-    } else if (event is EditActivityEvent) {
-      yield* _handleEditActivityEvent(event);
     }
   }
 
@@ -42,10 +40,14 @@ class ActivitiesBloc extends Bloc<ActivitiesEvent, ActivitiesState> {
   }
 
   Stream<ActivitiesState> _handleAddActivityEvent(
-    AddActivityEvent event,
-  ) async* {}
+    AddEditActivityEvent event,
+  ) async* {
+    final currentState = state;
+    if (currentState is IdleActivitiesState) {
+      final activities = currentState.activities;
+      activities.insert(0, event.activity);
 
-  Stream<ActivitiesState> _handleEditActivityEvent(
-    EditActivityEvent event,
-  ) async* {}
+      yield IdleActivitiesState(activities);
+    }
+  }
 }
