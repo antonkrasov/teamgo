@@ -45,7 +45,25 @@ class ActivitiesBloc extends Bloc<ActivitiesEvent, ActivitiesState> {
     final currentState = state;
     if (currentState is IdleActivitiesState) {
       final activities = currentState.activities;
-      activities.insert(0, event.activity);
+
+      // this should ne probably done in Repository...
+      final paramActivity = event.activity;
+      if (paramActivity.id == null) {
+        final newId = uuidGenerator.v4();
+        activities.insert(
+          0,
+          paramActivity.copyWith(
+            id: newId,
+          ),
+        );
+      } else {
+        int activityIndex = activities.indexWhere(
+          (test) => test.id == paramActivity.id,
+        );
+        if (activityIndex >= 0) {
+          activities[activityIndex] = paramActivity;
+        }
+      }
 
       yield IdleActivitiesState(activities);
     }

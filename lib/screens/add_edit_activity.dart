@@ -162,7 +162,7 @@ class _AddEditActivityFormState extends State<AddEditActivityForm> {
       focusNode: _whereFocusNode,
       textInputAction: TextInputAction.next,
       onFieldSubmitted: (_) {
-        _pickDate();
+        
       },
       decoration: InputDecoration(
         labelText: 'Where',

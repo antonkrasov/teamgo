@@ -48,4 +48,24 @@ class Activity extends Equatable {
 
   @override
   bool get stringify => true;
+
+  Activity copyWith({
+    id,
+    who,
+    what,
+    where,
+    when,
+    image,
+    createdByUser,
+  }) {
+    return Activity(
+      id: id ?? this.id,
+      who: who ?? this.who,
+      what: what ?? this.what,
+      where: where ?? this.where,
+      when: when ?? this.when,
+      image: image ?? this.image,
+      createdByUser: createdByUser ?? this.createdByUser,
+    );
+  }
 }
